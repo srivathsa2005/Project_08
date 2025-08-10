@@ -260,4 +260,20 @@ i <div class="container">
             <h2 style="color: #1f2937; margin-bottom: 20px;">Access Denied</h2>
             <p style="color: #6b7280; margin-bottom: 30px;">Please login first to access the dashboard.</p>
             <a href="doctor-login.html" style="background: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 500;">Login</a>
+       </div>
+        </div>
+      `;
+    } else {
+      // Update welcome message
+      document.getElementById("welcome-title").textContent = Welcome, ${doctor};
+ 
+      // Load appointments data
+      loadAppointments();
+    }
+ 
+    function loadAppointments() {
+      // Get appointments for this doctor
+      const data = JSON.parse(localStorage.getItem("appointments_" + doctor)) || [];
+      const appointmentsList = document.getElementById("appointments-list");
+ 
  
