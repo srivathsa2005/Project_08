@@ -331,4 +331,12 @@ i <div class="container">
         });
         appointmentsList.innerHTML = html;
       }
-
+   }
+ 
+    function logout() {
+      sessionStorage.removeItem("loggedInDoctor");
+      window.location.href = "doctor-login.html";
+    }
+  </script>
+</body>
+</html>
