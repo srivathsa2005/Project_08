@@ -302,4 +302,33 @@ i <div class="container">
           <div class="no-appointments">
             <p>No appointments scheduled yet.</p>
           </div>
+  `;
+      } else {
+        let html = "";
+        data.forEach(appointment => {
+          let formattedDate = "Date not specified";
+ 
+          if (appointment.date) {
+            const appointmentDate = new Date(appointment.date);
+            formattedDate = appointmentDate.toLocaleDateString('en-US', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            });
+          }
+ 
+          html += `
+            <div class="appointment-item">
+              <div class="appointment-patient">${appointment.name || 'Unknown Patient'}</div>
+              <div class="appointment-details">
+                <div class="appointment-detail"><strong>Problem:</strong> ${appointment.problem || 'Not specified'}</div>
+                <div class="appointment-detail"><strong>Date:</strong> ${formattedDate}</div>
+                <div class="appointment-detail"><strong>Time:</strong> ${appointment.time || 'Not specified'}</div>
+              </div>
+            </div>
+          `;
+        });
+        appointmentsList.innerHTML = html;
+      }
 
